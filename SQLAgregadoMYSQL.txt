@@ -1,0 +1,122 @@
+INSERT INTO PAIS(COD_PAIS,NOM_PAIS) VALUES
+(1,'Peru'),
+(2,'Argentina');
+INSERT INTO DEPARTAMENTO(COD_DEP,NOM_DEP,COD_PAIS) VALUES
+(1,'Junin',1),
+(2,'Lima',1),
+(3,'Buenos Aires',2),
+(4,'Cajamarca',1),
+(5,'Arequipa',1),
+(6,'Cusco',1);
+INSERT INTO DISTRITO(COD_DIS,NOM_DIS,COD_DEP) VALUES
+(1,'Sapallanga',1),
+(2,'San Agustin',1),
+(3,'San Martin de Porres',2),
+(4,'San Fernando',3),
+(5,'Jaen',4),
+(6,'Cerro Colorado',5),
+(7,'Chiguata',5),
+(8,'Chumbivilcas',6),
+(9,'Los Olivos',2),
+(10,'Carabayllo',2);
+INSERT INTO TIENDA(COD_TIE,COD_DIS,NOM_TIE,DIR_TIE,TEL_TIE) VALUES
+(1,3,'Bartolito','Av. Pacasmayo 15132',5674351);
+
+INSERT INTO CARGO(COD_CARGO,NOM_CARGO,SUELDO_CARGO,DESC_CARGO) VALUES
+(1,'Administrador',3000,'Se encarga de administrar todos los sistemas de la tienda.'),
+(2,'Repartidor',1200,'Se encarga de repartir los productos por delivery.'),
+(3,'Almacenero',1250,'Se encarga del almacenamiento de los productos.'),
+(4,'Cajero',1300,'Se encarga de registrar las ventas e imprimir el comprobante.'),
+(5,'Dependiente',1300,'Se encarga de atender al cliente.');
+
+INSERT INTO EMPLEADO(COD_EMP,NOM_EMP,APE_EMP,DNI_EMP,COD_CARGO,FECH_CONTR,COD_DIS,COD_TIE,DIR_EMP,CONT_EMP) VALUES
+(1,'Giovanni','Carlevarino',45637823,1,CURRENT_DATE(),3,1,'Mz. Lote 35 Urb. Los Girasoles','corredor532'),
+(2,'Josue','Acuña',56832456,3,CURRENT_DATE(),10,1,'Av. Alfonso Ugarte 158','3459842'),
+(3,'Jean Pierre','Llamoca',30293451,2,CURRENT_DATE(),9,1,'Av. Santa Luisa 450','wasd987e'),
+(4,'Robert','Carhuavilca',39485603,4,CURRENT_DATE(),3,1,'Mz. Lote 60 Av.San Nicolas','aea9976'),
+(5,'Alfredo','Perez',19485129,5,CURRENT_DATE(),3,1,'Jr. Miguel Grau 90','xyza4857');
+
+INSERT INTO ANIMAL(COD_ANI,NOM_ANI,DESC_ANI) VALUES
+(1,'Vaca','Mamifero de gran tamaño'),
+(2,'Cerdo','Mamifero de tamaño medio'),
+(3,'Cordero','Mamifero de tamaño medio');
+
+INSERT INTO CATEGORIA(COD_CAT,NOM_CAT,DESC_CAT) VALUES
+(1,'Primera A','Grasa moderada'),
+(2,'Primera B','Grasa moderada'),
+(3,'Extra','Poca grasa, más carne');
+
+INSERT INTO MARCA(COD_MAR,NOM_MAR,TEL_MAR,DESC_MAR) VALUES
+(1,'San Fernando','2135300','Empresa Peruana');
+
+INSERT INTO PROVEEDOR(ID_PRO,NOM_PRO,APE_PRO,TEL_PRO,RUC_PRO,DIR_PRO,COD_DIS) VALUES
+(1,'Luis','Quispe','304578302','104958639208','Av. San Martin 143',3),
+(2,'Manuel','Monterrey','495860302','10421130968','Jr. Palomino 54',10);
+
+INSERT INTO CARNE(ID_CAR,COD_ANI,COD_CAT,COD_MAR,PRE_UNI_CAR,CAN_CAR,PESO_CAR,FECH_VENC,DESC_CAR,ID_PRO) VALUES
+(1,1,3,null,30.1,8,55.4,'2023-08-02','Lomo de res',1),
+(2,3,null,1,20.2,10,50.5,'2023-08-04','Pierna de cerdo',2);
+
+INSERT INTO PEDIDO_COMPRA(COD_PED_COM,ID_CAR,COD_EMP,FECH_PED_COM,DESC_PED_COM) VALUES 
+(1,1,1,CURRENT_DATE(),'Se nesecita para mañana mismo.'),
+(2,2,1,CURRENT_DATE(),null);
+
+INSERT INTO STOCK(COD_STOCK,MIN_STOCK,MAX_STOCK) VALUES
+(1,10,300);
+
+INSERT INTO ALMACEN(COD_ALMA,TIPO_ALMA,COD_STOCK,TAM_CUA_ALMA,DECS_ALMA) VALUES
+(1,'Carnes',1,15,'Temperatura constante de 4°C');
+
+INSERT INTO INVENTARIO(COD_INVE,NOM_INVE,CANT_INVE,PESO_INVE,PRECIO_INVE,COD_EMP,COD_ALMA) VALUES
+(1,'Inv. de carne de res',0,0,0,3,1),
+(2,'Inv. e carne de cerdo',0,0,0,3,1);
+
+INSERT INTO COMPRA(COD_COM,DET_COM,ID_PRO,COD_INVE)VALUES
+(1,null,1,1),
+(2,'Buena compra',2,2);
+
+INSERT INTO VEHICULO(COD_VEH,TIPO_VEH,PLACA_VEH,DESC_VEH) VALUES
+(1,'Moto lineal','H2I3O9','Perfecta para deliverys');
+
+INSERT INTO CLIENTE(ID_CLI,NOM_CLI,APE_CLI,DNI_CLI,RUC_CLI,DIR_CLI,COD_DIS) VALUES
+(1,'Piero','Rodriguez','90458693','10904586938','Jr. Peñaloza 16',3);
+
+INSERT INTO DELIVERY(COD_DELI,COD_EMP,COD_VEH,DIR_DELI,COD_DIS) VALUES
+(1,3,1,'Jr. Peñaloza 20',3);
+
+INSERT INTO PEDIDO_VENTA(COD_PED_VEN,ID_CLI,COD_EMP,FECH_PED_VEN,DESC_PED_VEN,COD_DELI) VALUES
+(1,1,5,CURRENT_DATE(),'Lo ordeno con urgencia',1);
+
+INSERT INTO VENTA(COD_VEN,COD_EMP,COD_PED_VEN) VALUES
+(1,4,1);
+
+INSERT INTO BOLETA(NUM_BOL,RUC_BOL,FECH_BOL,TOTL_BOL) VALUES
+(1,103948593012,CURRENT_DATE(),0);
+
+INSERT INTO FACTURA(NUM_FAC,RUC_FAC,FECH_FAC,SUBT_FAC) VALUES
+(1,103948593012,CURRENT_DATE(),0);
+
+INSERT INTO COMPROBANTE(NUM_COMP,COD_COM,NUM_BOL,NUM_FAC,COD_VEN) VALUES
+(1,1,null,1,null),
+(2,2,null,1,null),
+(3,null,1,null,1);
+
+INSERT INTO TURNO(COD_TURNO,LUNES,MARTES,MIERCOLES,JUEVES,VIERNES,SABADO,DOMINGO,DESC_TURNO) VALUES
+(1,1,1,1,1,1,1,0,'Turnos generales');
+
+INSERT INTO HORARIO(COD_HOR,COD_TURNO,HORA_INI_HOR,HORA_FIN_HOR) VALUES
+(1,1,'08:00:00','20:00:00');
+
+INSERT INTO INGRESO(COD_ING,HORA_INGR_ING,HORA_SALD_ING,TIPO_ING) VALUES
+(1,'08:01:20','20:05:34','Puntual'),
+(2,'07:58:49','20:01:21','Puntual'),
+(3,'07:59:01','20:03:13','Puntual'),
+(4,'08:11:50','20:09:02','Tardanza'),
+(5,'08:01:47','20:06:29','Puntual');
+
+INSERT INTO CONTROL_EMPLEADO(COD_CONT_EMP,COD_HOR,COD_ING,COD_EMP,DESC_CONT_EMP) VALUES
+(1,1,1,1,'Dia Lunes'),
+(2,1,2,2,'Dia Lunes'),
+(3,1,3,3,'Dia Lunes'),
+(4,1,4,4,'Dia Lunes'),
+(5,1,5,5,'Dia Lunes');
